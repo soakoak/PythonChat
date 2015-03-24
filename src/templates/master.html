@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/default.css" />
+  <title>{{ chatname }}</title>
+</head>
+<body class="black"> 
+{%- block navbar -%}
+<nav class="navbar navbar-default navbar-fixed-top white" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="./">Keskustelukerho</a>
+    </div>
+    
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="btn-group navbar-left">
+        
+          <div class="btn-group">
+            <button type="button" class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown" data-target="#room-collapse">
+              Huoneet 
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              {%- for chat, value in chats -%}
+              <li><a href="/enterchat?chat={{ chat }}">{{ value }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown">
+              Viestit 
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu msg-collapse">
+              <li><a class="msgA" href="#">Näytä kaikki</a></li>
+              <li><a class="msg10" href="#">10 min sisällä</a></li>
+              <li><a class="msg60" href="#">Tunnin sisällä</a></li>
+              <li><a class="msg2460" href="#">24h sisällä</a></li>
+            </ul>
+          </div>
+          
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><button type="button" class="btn btn-primary navbar-btn" onClick="window.location.href='{{ url }}'">{{ url_text }}</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{%- endblock -%}
+<article class="container">
+  {%- block content -%}
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Tervetuloa huoneeseen {{ chatname }}</h1>
+      <script src="./js/time.js"></script>
+      <p class="pull-right"> Nyt on <script type="text/javascript">document.write(now({{ now|from70s*1000 }}))</script></p><br />
+      <button type="button" class="btn btn-default msgR">Päivitä viestit</button> 
+    </div>
+  </div>
+  {%- block pagecontent -%}
+  <p> This is template text. If you're seeing this in a page rendered
+   by chat, something is wrong.</p>
+  {%- endblock -%}   
+  {%- endblock -%}
+</article>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="./js/oma_ajax.js"></script>
+<script type="text/javascript">
+  var cUser = '{{ user|escapejs if user != None }}';
+  var cChat = '{{ requested_chat if requested_chat != None }}';
+$(document).ready( function(){
+  $('.msgR').click(function(){ loadMsgs(cUser, cChat) });
+  $('.msgA').click(function(){ loadMsgs(cUser, cChat) });
+  $('.msg10').click(function(){ loadMsgs(cUser, cChat, 10) });
+  $('.msg60').click(function(){ loadMsgs(cUser, cChat, 60) });
+  $('.msg2460').click(function(){ loadMsgs(cUser, cChat, 1440) });
+});
+</script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

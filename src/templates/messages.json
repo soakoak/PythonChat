@@ -1,0 +1,15 @@
+{
+  "messages": [
+  {%- for m in msg_list -%}
+    {
+      "user" : "{{ m.user|e }}",
+      "chat" : "{{ m.chat|e }}",
+      "message" : "{{ m.message|e }}",
+      "timestamp" : "{{ m.timestamp.strftime(timestmpf) }}"
+    }
+    {%- if not loop.last -%}
+    ,
+    {% endif %}
+    {%- endfor -%}
+      ]
+}

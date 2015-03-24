@@ -1,0 +1,60 @@
+@CHARSET "ISO-8859-1";
+@import url('./bootstrap.css');
+
+body {
+	 padding-top: 70px;
+}
+
+.black {
+	background-color: black;
+	/*color:  white; /**/ */
+}
+
+.round {
+	border-radius:0.5em;
+}
+
+.padding{
+	padding: 1em 2em 0.5em 2em;
+}
+
+.white {
+	background-color: white ;
+	/*color: black; /**/ */
+}
+
+.error {
+	color: #D10000;
+	text-align: center;
+}
+
+.element {
+	border-radius:0.5em;
+	padding: 1em 2em 0.5em 2em;
+	background-color: white ;
+	margin: 0em 0em 0.5em 0em;
+}
+
+.msg {
+	padding: 1em 1em 1em 1em;
+	margin: 0em 0em 0.5em 0em;
+}
+
+div.msg-other {
+	background-color: #EDEDE8 ;
+	color: black; /**/ */ 
+}
+
+div.msg-mine {
+	background-color: #BFBFB8 ;
+	color: black; /**/ */
+}
+
+/*a:link { color : azure; background : transparent none ; }
+a:visited { color : DarkRed; background : transparent none ; }
+a:hover { color : #933; background : transparent none ; }
+a:active { color : blue; background : transparent none ; }  /**/ */
+
+/* .white a:link { color : blue; }
+.white a:visited { color : purple; }
+.white a:hover { color : red; } /**/ */

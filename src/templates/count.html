@@ -1,0 +1,15 @@
+{% extends "landing.html" %}
+{% block pagecontent %}
+<div class="container element">
+  <div class="row">
+    <div class="col-md-3 col-md-offset-8">
+      <h3>Viimeiset 20 viestiä</h3> 
+    </div>
+  </div>
+</div>
+{{ super() }}
+{% endblock %}
+
+{% block strfmsg %}
+	{{ super() }} (läh. {{ m.timestamp|delta }} sekuntia sitten)
+{% endblock %}

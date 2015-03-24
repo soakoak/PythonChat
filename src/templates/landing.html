@@ -1,0 +1,27 @@
+{%- extends "master.html" -%}
+{%- block pagecontent -%}
+<div id="msg_list" class="container element">
+{%- for m in msg_list -%}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="media">   
+        {%- if m.user == user -%}
+        <div class="media-body round msg msg-mine">  
+        {%- else -%}
+        <div class="media-body round msg msg-other">
+        {%- endif -%}
+        <h4 class="media-heading">{{ m.user }} ({{ m.chat }})</h4>
+        <div class="row">
+          <div class="col-md-6">
+          {%- block strfmsg scoped -%}
+          [{{ m.timestamp.strftime("%d-%m-%Y %H:%M") }}] {{ m.message|e }}
+          {%- endblock -%}
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+	</div>
+ {%- endfor -%}
+</div>
+{%- endblock -%}

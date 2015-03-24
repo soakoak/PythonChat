@@ -1,0 +1,14 @@
+{%- extends "landing.html" -%}
+{%- block pagecontent -%}
+{{ super() }}
+<script src="/js/submit.js"></script>
+<div class="container element">
+  <form action="/talk?chat={{ requested_chat }}" method="post" role="form"> 
+    <div class="form-group">
+      <label for="msgInput">Message</label>
+      <textarea class="form-control" id="msgInput" name="message" rows="3"></textarea> <!-- onChange tarkistus kay myos -->
+    </div>
+    <input type="button" class="btn btn-default" value="Send Message" onClick="validate(this.form)"/>
+  </form>
+</div>
+{%- endblock -%}

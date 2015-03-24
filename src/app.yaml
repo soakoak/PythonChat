@@ -1,0 +1,28 @@
+application: planar-strap-123
+version: v1
+runtime: python27
+api_version: 1
+threadsafe: false
+
+handlers:
+- url: /stylesheets
+  static_dir: static/stylesheets
+  
+- url: /js
+  static_dir: static/js
+  
+- url: /fonts
+  static_dir: static/fonts
+  
+- url: /talk
+  script: launch.py
+  login: required
+  
+- url: /.*
+  script: launch.py
+
+libraries:
+- name: webapp2
+  version: 2.5.1
+- name: jinja2
+  version: 2.6
